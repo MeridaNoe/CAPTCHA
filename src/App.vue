@@ -12,6 +12,7 @@
 <script>
 import { WidgetInstance } from "friendly-challenge";
 import { ref } from "vue";
+import CaptchaService from './services/CaptchaResponse'
 
 export default {
   data() {
@@ -29,13 +30,11 @@ export default {
 
     async verifyCaptcha(solution) {
       let response = await CaptchaService.
-      verifyCaptcha(solution);
+      verificarCaptcha(solution);
       console.log(response);
     },  
-
-
-    doneCallback: (solution) => {
-     this.verifyCaptcha(solution)
+    doneCallback(solution) {
+     this.verifyCaptcha(solution);
     },
 
     errorCallback: (err) => {
